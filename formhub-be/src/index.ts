@@ -6,7 +6,7 @@ const app = express();
 app.use(morgan('dev')); // logger
 
 app.get('/', async (req, res) => {
-  const submissions = await db.post.findMany();
+  const submissions = await db.submission.findMany();
   res.json(submissions);
 });
 

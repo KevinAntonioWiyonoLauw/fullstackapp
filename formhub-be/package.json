@@ -8,13 +8,14 @@
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
-    "build:prisma":"prisma generate && pnpm rebuild:be",
+    "build:prisma": "prisma generate && pnpm rebuild:be",
     "db:console": "docker compose run postgres psql -h postgres -U postgres -d webapp_dev",
     "db:migrate": "knex migrate:latest",
     "docker:db:migrate": "docker compose run backend pnpm db:migrate",
     "docker:db:migrate:undo": "docker compose run backend pnpx knex migrate:down",
     "docker:seed:dev": "docker compose run backend pnpm ts-node scripts/seed/dev.ts",
     "rebuild:be": "docker compose build backend && docker compose rm --force --stop backend && docker compose up -d backend",
+    "seed:dev": "docker compose run backend pnpm ts-node scripts/seed/dev.ts",
     "start": "node dist/index.js",
     "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/index.js",
     "watch": "watchy --no-init-spawn --debounce 1 -w src -- docker-compose restart backend"
