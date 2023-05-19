@@ -4,8 +4,8 @@
 
 - Docker ✅
 - TypeScript ✅
-- React
-- Vite
+- React ✅
+- Vite ✅
 - Node.js ✅
 - Express ✅
 - PostgreSQL ✅
