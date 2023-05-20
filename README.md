@@ -8,6 +8,7 @@
 - TypeScript ✅
 - React ✅
 - Vite ✅
+- MUI ✅
 - Node.js ✅
 - Express ✅
 - PostgreSQL ✅
