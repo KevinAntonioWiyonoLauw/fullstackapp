@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import React from "react";
 
 const Dashboard: React.FC = () => {
@@ -14,7 +15,27 @@ const Dashboard: React.FC = () => {
     `
   );
   if (loading) return <div>Loading...</div>;
-
-  return <div>{JSON.stringify(data)}</div>;
+  const columns: GridColDef[] = [
+    { field: "id", headerName: "ID" },
+    { field: "submittedAt", headerName: "Submitted At" },
+  ];
+  return (
+    <DataGrid
+      rows={data.submissions.map((submission: any) => ({
+        id: submission.id,
+        submittedAt: submission.submittedAt,
+      }))}
+      columns={columns}
+      // initialState={{
+      //   pagination: {
+      //     paginationModel: {
+      //       pageSize: 5,
+      //     },
+      //   },
+      // }}
+      // pageSizeOptions={[5]}
+      disableRowSelectionOnClick
+    />
+  );
 };
 export default Dashboard;
