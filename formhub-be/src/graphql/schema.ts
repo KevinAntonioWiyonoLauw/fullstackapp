@@ -8,7 +8,7 @@ const schema = `#graphql
     }
     type Submission {
         id: ID!
-        submissionAt: DateTime!
+        submittedAt: DateTime!
         data: JSON!
     }
     `;
