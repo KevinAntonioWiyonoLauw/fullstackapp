@@ -6,7 +6,7 @@ const resolvers = {
   JSON: GraphQLJSON,
   Query: {
     submissions: () => {
-      return db.submission.findMany({ orderBy: { submissionAt: 'desc' } });
+      return db.submission.findMany({ orderBy: { submittedAt: 'desc' } });
     },
   },
 };
