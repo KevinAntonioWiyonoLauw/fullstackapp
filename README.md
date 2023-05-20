@@ -16,6 +16,7 @@
 - Knex ✅
 - Redis
 - GraphQL ✅
+- GraphQL Code Generator ✅
 - Apollo Server v4 ✅
 - pnpm ✅
 - Render
@@ -40,7 +41,7 @@ pnpm rebuild:be
 2. **Apollo** Server is used for GraphQL server
    Check doc `appolo-server-express` [**HERE**](https://www.apollographql.com/docs/apollo-server/migration/#migrate-from-apollo-server-express)
 
-### huge trouble shooting for 2 days, beacuse of Apollo Server update doc from 3 to 4, many refence are not working.
+### Huge trouble shooting for 2 days, beacuse of Apollo Server update doc from 3 to 4, many refence are not working.
 
 Check some changes in src/index.ts, and 2 files in graphql folder
 
@@ -68,3 +69,21 @@ pnpm rebuild:be
 pnpm docker:db:migrate
 pnpm seed:dev
 ```
+
+### 🔔 **3. GraphQL Code Generator**
+
+GraphQL is a type system you get a typed set of data back. right now our query is kind of this string and its loading it into this data object which it doesn’t know what type it is.
+
+So lets use a generator to generate for real types of submissions.
+
+Use `graphql codegen` generate types:
+
+graphql code generator will be able to query our backend introspect our schema that we’ve defined on our backend and generate the proper typescript types for returns our query.
+
+`npm install -D @graphql-codegen/cli`
+
+`npx graphql-code-generator init`
+
+`npm install @graphql-codegen/typescript-operations`
+
+`npm run build:types`
