@@ -13,9 +13,10 @@ const run = async () => {
       },
     ],
   });
+  console.log('111', db.submission.findMany());
 };
 
-// Auto-run if main script (not imported)
+// Auto-run when called directly
 run().then(() => {
   console.log('Data seed complete');
   process.exit();
