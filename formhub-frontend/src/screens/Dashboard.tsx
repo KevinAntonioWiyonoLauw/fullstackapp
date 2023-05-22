@@ -1,16 +1,19 @@
 import { gql, useQuery } from "@apollo/client";
-import Styled from "@emotion/styled";
+import styled from "@emotion/styled";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { startCase, uniq } from "lodash";
 import React from "react";
+import { Query } from "../gql/graphql";
 
-const Container = Styled.div`
+const Container = styled.div`
   display: flex;
-  height: 100vw;
+  height: 100vh;
+  flex-direction: column;
   width: 100vw;
 `;
 
 const Dashboard: React.FC = () => {
-  const { data, loading } = useQuery(
+  const { data, error, loading } = useQuery<Query>(
     gql`
       query Submissions {
         submissions {
@@ -22,17 +25,21 @@ const Dashboard: React.FC = () => {
     `
   );
   if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message} </div>;
+
+  const { submissions } = data!;
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 200 },
     { field: "submittedAt", headerName: "Submitted At", width: 200 },
+    ...uniq(submissions.flatMap((s) => Object.keys(s.data))).map((field) => ({
+      field,
+      headerName: startCase(field),
+    })),
   ];
   return (
     <Container>
       <DataGrid
-        rows={data.submissions.map((submission: any) => ({
-          id: submission.id,
-          submittedAt: submission.submittedAt,
-        }))}
+        rows={submissions}
         columns={columns}
         // initialState={{
         //   pagination: {
