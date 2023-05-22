@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { startCase, uniq } from "lodash";
 import React from "react";
 import { Query } from "../gql/graphql";
@@ -34,6 +34,8 @@ const Dashboard: React.FC = () => {
     ...uniq(submissions.flatMap((s) => Object.keys(s.data))).map((field) => ({
       field,
       headerName: startCase(field),
+      width: 200,
+      valueGetter: (params: GridValueGetterParams) => params.row.data[field],
     })),
   ];
   return (
