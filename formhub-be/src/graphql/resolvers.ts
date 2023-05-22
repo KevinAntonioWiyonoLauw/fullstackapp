@@ -11,8 +11,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    queueSubmissionGeneration: () => {
-      enqueue('generateSubmissions');
+    queueSubmissionGeneration: async () => {
+      await enqueue('generateSubmissions');
     },
   },
 };

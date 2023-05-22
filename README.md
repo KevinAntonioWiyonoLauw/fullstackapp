@@ -109,3 +109,40 @@ const columns: GridColDef[] = [
   })),
 ];
 ```
+
+### 6. Test Queue the job
+
+1 - Create a mutation type in `schema.ts`
+
+```ts
+ type Mutation {
+        queueSubmissionGeneration: Boolean!
+    }
+```
+
+2 - Excute the mutation in `resolver.ts`
+the job is called `generateSubmissions`
+
+```ts
+Mutation: {
+    queueSubmissionGeneration: async () => {
+      await enqueue('generateSubmissions');
+    },
+  },
+```
+
+3 When the job runs, then worker in queue.ts
+
+```ts
+const worker = new Worker(
+  QUEUE_NAME,
+  async (job) => {
+    if (job.name === "generateSubmissions") {
+      console.log("Generating submissions...");
+    }
+  },
+  { connection }
+);
+```
+
+I would get console log `Generating submissions...` in terminal. After test through all, I start to generate the real submission.
