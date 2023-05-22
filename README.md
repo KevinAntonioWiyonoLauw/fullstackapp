@@ -14,12 +14,13 @@
 - ✅ PostgreSQL
 - ✅ Prisma
 - ✅ Knex
-- ✅ Redis
 - ✅ GraphQL
 - ✅ Codegen config (NEW)
 - ✅ Apollo Server v4 (NEW)
+- ✅ Redis
+- ✅ faker js
 - ✅ pnpm
-- Render
+- Deploy to Render
 
 ## 🎃 Getting Started
 
