@@ -8,7 +8,7 @@
 - ✅ TypeScript
 - ✅ React
 - ✅ Vite
-- ✅ MUI
+- ✅ MUI X - Data Grid
 - ✅ Node.js
 - ✅ Express
 - ✅ PostgreSQL
@@ -16,8 +16,8 @@
 - ✅ Knex
 - Redis
 - ✅ GraphQL
-- ✅ GraphQL Code Generator
-- ✅ Apollo Server v4
+- ✅ Codegen config (NEW)
+- ✅ Apollo Server v4 (NEW)
 - ✅ pnpm
 - Render
 
@@ -87,3 +87,24 @@ graphql code generator will be able to query our backend introspect our schema t
 `npm install @graphql-codegen/typescript-operations`
 
 `npm run build:types`
+
+As you noticed, I used npm for frontend, and pnpm for backend. 🤷‍♀️
+
+### 🔔 **4. Codegen ts config setting**
+
+### 5. MUI- Data Grid
+
+There are some new code I learned from MUI data grid.
+
+```ts
+const columns: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 200 },
+  { field: "submittedAt", headerName: "Submitted At", width: 200 },
+  ...uniq(submissions.flatMap((s) => Object.keys(s.data))).map((field) => ({
+    field,
+    headerName: startCase(field),
+    width: 200,
+    valueGetter: (params: GridValueGetterParams) => params.row.data[field],
+  })),
+];
+```
