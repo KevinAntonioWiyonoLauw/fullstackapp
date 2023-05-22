@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -28,3 +29,11 @@ export type Submission = {
   id: Scalars['ID'];
   submittedAt: Scalars['DateTime'];
 };
+
+export type SubmissionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SubmissionsQuery = { __typename?: 'Query', submissions: Array<{ __typename?: 'Submission', id: string, submittedAt: any, data: any }> };
+
+
+export const SubmissionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Submissions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"submissions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"submittedAt"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}}]}}]} as unknown as DocumentNode<SubmissionsQuery, SubmissionsQueryVariables>;
