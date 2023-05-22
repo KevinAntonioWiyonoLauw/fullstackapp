@@ -14,7 +14,7 @@
 - ✅ PostgreSQL
 - ✅ Prisma
 - ✅ Knex
-- Redis
+- ✅ Redis
 - ✅ GraphQL
 - ✅ Codegen config (NEW)
 - ✅ Apollo Server v4 (NEW)
