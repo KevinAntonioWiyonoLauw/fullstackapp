@@ -149,7 +149,7 @@ I would get console log `Generating submissions...` in terminal. After test thro
 
 ## 📝 Work flow
 
-Functionality is done in frontend, backend and frontend are connect via graphql, `faker.js` is used to generate fake data, after queue the job, the fake data will be stored in graphql database.
+The button (in frontend page) is excuting the mutation on the backend,that is generating a job `bullmq` queue which is stored in redis, which is running in docker container, which is organized by docker compose, which then gets run in back-end `worker`, which then used `faker.js` to generate submission (fake data), then use `prisma` to push that into Postgres which is also in docker. And then via graphql, we can query that data in the front-end in the data grid.
 
 run frontend `npm run dev`
 
