@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { startCase, uniq } from "lodash";
@@ -10,6 +10,25 @@ const Container = styled.div`
   height: 100vh;
   flex-direction: column;
   width: 100vw;
+`;
+
+const Toorbar = styled.div`
+  background-color: #eee;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+`;
+
+const Button = styled.button`
+  background-color: #000;
+  border: none;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 30px;
+  &:hover {
+    background-color: #ff0000;
+  }
 `;
 
 const Dashboard: React.FC = () => {
@@ -24,6 +43,16 @@ const Dashboard: React.FC = () => {
       }
     `
   );
+
+  const [generateSubmissions] = useMutation(
+    gql`
+      mutation GenerateSubmissions($count: Int!) {
+        queueSubmissionGeneration(count: $count)
+      }
+    `,
+    { variables: { count: 5 } }
+  );
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message} </div>;
 
@@ -40,6 +69,11 @@ const Dashboard: React.FC = () => {
   ];
   return (
     <Container>
+      <Toorbar>
+        <Button onClick={() => generateSubmissions()}>
+          Generate Submissions
+        </Button>
+      </Toorbar>
       <DataGrid
         rows={submissions}
         columns={columns}
