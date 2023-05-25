@@ -145,4 +145,14 @@ const worker = new Worker(
 );
 ```
 
-I would get console log `Generating submissions...` in terminal. After test through all, I start to generate the real submission.
+I would get console log `Generating submissions...` in terminal. After test through all, I start to generate the real submission. After testing worked, I changed the code in `queue.ts` `schema.ts` `resolver.ts` to the real code. Set `count` to generate 5 submissions at one time.
+
+## 📝 Work flow
+
+Functionality is done in frontend, backend and frontend are connect via graphql, `faker.js` is used to generate fake data, after queue the job, the fake data will be stored in graphql database.
+
+run frontend `npm run dev`
+
+run backend `docker compose up`
+
+Next step, I will opmize the frontend and deploy to render.
