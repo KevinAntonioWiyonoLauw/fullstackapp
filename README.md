@@ -93,6 +93,45 @@ As you noticed, I used npm for frontend, and pnpm for backend. 🤷‍♀️
 
 ### 🔔 **4. Codegen ts config setting**
 
+Use `graphql codegen` generate types:
+
+graphql code generator will be able to query our backend introspect our schema that we’ve defined on our backend and generate the proper typescript types for returns our query.
+
+Run the following bash to star codegen
+
+```Bash
+npm install -D @graphql-codegen/cli
+
+npx graphql-code-generator init
+
+npm install @graphql-codegen/typescript-operations
+
+npm run build:types
+```
+
+**📘 codegen.ts config file, don’t need any plugin, and add document path. This is for new codegen version!**
+
+```ts
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: "http://localhost:5000/graphql",
+  documents: ["src/**/*.tsx"],
+  generates: {
+    "src/gql/": {
+      preset: "client",
+      plugins: [],
+      config: {
+        withHooks: true,
+      },
+    },
+  },
+};
+```
+
+So now I can pull the data from backend, via graphQL, pip it into the table, figure out dynamic table we want to display here. It works ! 🎉
+
+📘 I figured out the codegen for days, include read new versions documents and checked the issues from stackoverflow. Here is one question when I did rabbit hole reading, and talked with some developer expert. Here is my blog [LINK](https://www.yancodeblog.codes/).<br > CHECK: `Best answer I got why we need to maintain migration files` if you have same question.
+
 ### 5. MUI- Data Grid
 
 There are some new code I learned from MUI data grid.
