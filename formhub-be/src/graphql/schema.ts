@@ -8,7 +8,7 @@ const schema = `#graphql
     }
 
     type Mutation {
-        queueSubmissionGeneration: Boolean!
+        queueSubmissionGeneration(count:Int): Boolean!
     }
 
     type Submission {

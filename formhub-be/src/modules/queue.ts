@@ -1,4 +1,5 @@
 import { Queue, Worker } from 'bullmq';
+import ModGenerate from './generate';
 
 const QUEUE_NAME = 'default';
 
@@ -13,7 +14,8 @@ const worker = new Worker(
   QUEUE_NAME,
   async (job) => {
     if (job.name === 'generateSubmissions') {
-      console.log('Generating submissions...');
+      const submission = await ModGenerate.submission();
+      console.log(submission);
     }
   },
   { connection }
