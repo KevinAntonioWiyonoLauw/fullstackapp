@@ -20,6 +20,7 @@
 - ✅ Redis
 - ✅ faker js
 - ✅ pnpm
+- Build monorepo with [Turbo Build](https://turbo.build/)
 - Deploy to Render
 
 ## 🎃 Getting Started
