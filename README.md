@@ -194,4 +194,6 @@ run frontend `npm run dev`
 
 run backend `docker compose up`
 
-Next step, I will opmize the frontend and deploy to render.
+👉 Next step, I will start to build monorepo and update dockerfile and docker compose file. Rebuild the structure of backend and frontend and dockerfile and docker compose file. Check [**New Repo**](https://github.com/yanliu1111/monorepo-docker-fullstack-app) which is only for studying monorepo building and deploy.
+
+✅ This repo is for studying docker, docker compose for full stack app. Hope it helps your study. 🤞
