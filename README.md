@@ -8,6 +8,7 @@
 - ✅ TypeScript
 - ✅ React
 - ✅ Vite
+- ✅ SWC
 - ✅ MUI X - Data Grid
 - ✅ Node.js
 - ✅ Express
@@ -28,6 +29,8 @@
 > Just heard, cool kids using pnpm 👦, so let's try it out in this project. Hope it works well. 🤞
 
 `formhub-be` is backend setting, all pnpm setting and docker setting are in Package.json, scripts section.
+
+**SWC config**: SWC can be used for both compilation and bundling. For compilation, it takes JavaScript / TypeScript files using modern JavaScript features and outputs valid code that is supported by all major browsers.
 
 ### 🚀 How to run
 
