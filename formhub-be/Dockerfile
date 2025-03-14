@@ -1,9 +1,10 @@
 FROM node:23-alpine3.20
 
-# Install OpenSSL (Alpine 3.14 uses OpenSSL 1.1 by default)
+# Install OpenSSL and dependencies
 RUN apk update && apk add --no-cache openssl
 
-RUN npm i -g pnpm
+# Install pnpm and rimraf globally
+RUN npm i -g pnpm rimraf
 
 # Increase PNPM's network timeout to 600 seconds
 RUN pnpm config set network-timeout 600000
@@ -18,5 +19,5 @@ RUN pnpx prisma generate
 
 COPY . .
 
-EXPOSE 8080
-CMD [ "pnpm", "start" ]
+EXPOSE 5000
+CMD [ "pnpm", "start:docker" ]
